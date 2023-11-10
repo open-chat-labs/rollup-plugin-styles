@@ -79,6 +79,7 @@ export async function resolveAsync(ids: string[], userOpts: ResolveOpts): Promis
   for await (const basedir of options.basedirs) {
     const opts = { ...options, basedir, basedirs: undefined, caller: undefined };
     for await (const id of ids) {
+      //@ts-ignore
       const resolved = await resolverAsync(id, opts);
       if (resolved) return resolved;
     }
@@ -100,6 +101,7 @@ export function resolveSync(ids: string[], userOpts: ResolveOpts): string {
   for (const basedir of options.basedirs) {
     const opts = { ...options, basedir, basedirs: undefined, caller: undefined };
     for (const id of ids) {
+      //@ts-ignore
       const resolved = resolverSync(id, opts);
       if (resolved) return resolved;
     }
